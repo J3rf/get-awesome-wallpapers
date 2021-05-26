@@ -39,17 +39,15 @@ try:
 except:
     usedWallpapers = []
 
-def get_timeline():
-    try:
-        auth = tweepy.OAuthHandler(consumerKey, consumerKeySecret)
-        auth.set_access_token(accessToken, accessTokenSecret)
-        api = tweepy.API(auth)
-        tweets = api.user_timeline("awesomepapers", count = 200, exclude_replies = True)
-        return tweets
-    except:
-        ctypes.windll.user32.MessageBoxW(0, "API Key Not Found or Expired. Please check your config.ini file", "API Key Error", 0x0 | 0x10)
-        sys.exit()
-tweets = get_timeline()
+try:
+    auth = tweepy.OAuthHandler(consumerKey, consumerKeySecret)
+    auth.set_access_token(accessToken, accessTokenSecret)
+    api = tweepy.API(auth)
+    tweets = api.user_timeline("awesomepapers", count = 200, exclude_replies = True)
+except:
+    ctypes.windll.user32.MessageBoxW(0, "API Key Not Found or Expired. Please check your config.ini file", "API Key Error", 0x0 | 0x10)
+    sys.exit()
+
 print(f"Found {len(tweets)} awesome wallpapers")
 i = 0
 while True:
