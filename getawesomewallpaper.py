@@ -52,7 +52,7 @@ print(f"Found {len(tweets)} awesome wallpapers")
 i = 0
 while True:
     if i == len(tweets):
-        print("Couldn't find new image, exiting...")
+        ctypes.windll.user32.MessageBoxW(0, "No new image found. Please change your config.ini file settings", "Used Image Error", 0x0 | 0x10)
         sys.exit()
     if getLatest:
         index = 0
