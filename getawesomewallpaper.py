@@ -64,6 +64,7 @@ while True:
         i += 1
         continue
     media = tweets[index].entities['media']
+    # rn it only gets the first image of a tweet idk if i should change that
     image = media[0]['media_url']
     if not reuseWallpapers and image in usedWallpapers:
         print("Already used that one! Finding another")
