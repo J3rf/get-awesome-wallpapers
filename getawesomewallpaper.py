@@ -59,6 +59,10 @@ while True:
     else:
         index = random.randint(0, len(tweets) - 1)
     tweet = tweets[index]
+    if not [medium['type'] == 'photo' for medium in tweet.entities['media']]:
+        print("This tweet doesn't have an image! Finding another")
+        i += 1
+        continue
     media = tweets[index].entities['media']
     image = media[0]['media_url']
     if not reuseWallpapers and image in usedWallpapers:
